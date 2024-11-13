@@ -11,8 +11,8 @@ public class Main {
     }
 
     public static String calc(String input) throws Exception {
-        String operator = getOperator(input);
         int[] operands = getOperands(input);
+        String operator = getOperator(input);
 
         switch (operator) {
             case "+":
@@ -27,15 +27,17 @@ public class Main {
     }
 
 
-    private static String getOperator(String str) {
+    private static String getOperator(String str) throws Exception {
         if (str.contains("+")) {
             return "+";
         } else if (str.contains("-")) {
             return "-";
         } else if (str.contains("*")) {
             return "*";
-        } else {
+        } else if (str.contains("/")) {
             return "/";
+        } else {
+            throw new Exception("Доступные операторы: + - * /");
         }
     }
 
@@ -45,8 +47,11 @@ public class Main {
         int firstOperand = 0;
         int secondOperand = 0;
 
-        if (array.length != 2) {
-            throw new Exception("Формат математической операции не удовлетворяет заданию: \\n Два операнда и один оператор (+, -, /, *)\\\")");
+
+        if (array.length < 2) {
+            throw new Exception("Строка не является математической операцией");
+        } else if (array.length > 2) {
+            throw new Exception("Формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
         } else {
             try {
                 firstOperand = Integer.parseInt(array[0]);
@@ -57,7 +62,7 @@ public class Main {
         }
 
         if ((firstOperand < 1 || firstOperand > 10) || (secondOperand < 0 || secondOperand > 10)) {
-            throw new Exception("Калькулятор должен принимать на вход числа от 1 до 10 включительно.");
+            throw new Exception();
         }
         return new int[]{firstOperand, secondOperand};
     }
