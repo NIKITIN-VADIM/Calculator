@@ -15,16 +15,12 @@ public class Main {
         int[] operands = getOperands(input);
         String operator = getOperator(input);
 
-        switch (operator) {
-            case "+":
-                return String.valueOf(operands[0] + operands[1]);
-            case "-":
-                return String.valueOf(operands[0] - operands[1]);
-            case "*":
-                return String.valueOf(operands[0] * operands[1]);
-            default:
-                return String.valueOf(operands[0] / operands[1]);
-        }
+        return switch (operator) {
+            case "+" -> String.valueOf(operands[0] + operands[1]);
+            case "-" -> String.valueOf(operands[0] - operands[1]);
+            case "*" -> String.valueOf(operands[0] * operands[1]);
+            default -> String.valueOf(operands[0] / operands[1]);
+        };
     }
 
 
