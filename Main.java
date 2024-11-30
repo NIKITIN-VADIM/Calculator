@@ -1,13 +1,14 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
         System.out.print("Введите выражение: ");
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        scanner.close();
-        System.out.print("Ответ: " + calc(input));
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            String input = reader.readLine();
+            System.out.print("Ответ: " + calc(input));
+        }
     }
 
     public static String calc(String input) throws Exception {
