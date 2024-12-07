@@ -1,4 +1,4 @@
-// Довести калькулятор до лямд
+// Довести калькулятор до лямда выражений
 import java.util.Scanner;
 
 public class Main {
